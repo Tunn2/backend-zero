@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
+const apiRoutes = require("./routes/api");
+
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 const connection = require("./config/database");
@@ -15,6 +17,7 @@ app.use(express.urlencoded({ extended: true })); //for form data
 configViewEngine(app);
 
 app.use("/", webRoutes);
+app.use("/v1/api", apiRoutes);
 
 (async () => {
   try {
