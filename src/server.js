@@ -5,6 +5,7 @@ const app = express();
 const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
 const apiRoutes = require("./routes/api");
+const fileUpLoad = require("express-fileupload");
 
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
@@ -13,6 +14,7 @@ const connection = require("./config/database");
 //config req.body
 app.use(express.json()); //for json
 app.use(express.urlencoded({ extended: true })); //for form data
+app.use(fileUpLoad());
 
 configViewEngine(app);
 
