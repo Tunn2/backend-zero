@@ -1,4 +1,3 @@
-const { error } = require("console");
 const path = require("path");
 
 const uploadSingleFile = async (fileObject) => {
@@ -17,7 +16,6 @@ const uploadSingleFile = async (fileObject) => {
   } catch (error) {
     return {
       status: "failed",
-      path: null,
       error: JSON.stringify(error),
     };
   }
@@ -25,6 +23,7 @@ const uploadSingleFile = async (fileObject) => {
 
 const uploadMultipleFiles = async (fileArr) => {
   try {
+    console.log(fileArr + "file array ne");
     let uploadPath = path.resolve(__dirname, "../public/images/upload");
     let resultArr = [];
     let countSuccess = 0;
